@@ -13,7 +13,7 @@ type RootStackParamList = {
   type LoginScreenNavigationProp = StackNavigationProp<
     RootStackParamList,
     'PrivacyPolicy'
-  >;
+  >;//asi se seclaran las pantallas que vamos a llamr
   
   const LoginScreen: React.FC = () => {
     const [email, setEmail] = useState<string>('');
@@ -22,8 +22,11 @@ type RootStackParamList = {
   
     const handleLoginSuccess = () => {
       navigation.navigate('PrivacyPolicy');
+    }; // Cada que quieras ligar una nueva pantalla, debes crear una funcion como esta,ponle un nombre acorde a la funion
+    
+    const handleRegisterAction = () => {
+      navigation.navigate('RegistrarScreen');
     };
-  
     const handleLogin = () => {
       // Aquí iría la lógica para validar el inicio de sesión
       // Si el inicio de sesión es exitoso, llamar a handleLoginSuccess

@@ -1,5 +1,6 @@
 // src/screens/RegistrationScreen.tsx
 import React, { useState } from 'react';
+import { Picker } from '@react-native-picker/picker';
 import {
   View,
   Text,
@@ -7,8 +8,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
-  Picker,
-  Switch,
+  Switch, 
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -16,13 +16,14 @@ const RegistrationScreen: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    clientType: 'MVZ','Franquicatareo',
+    clientType: 'MVZ, Franquicatareo',
     gender: 'Femenino',
     email: '',
     password: '',
     confirmPassword: '',
     acceptTerms: false,
   });
+
 
   const handleInputChange = (name: string, value: string | boolean) => {
     setFormData({ ...formData, [name]: value });
@@ -58,8 +59,10 @@ const RegistrationScreen: React.FC = () => {
         <Picker
           selectedValue={formData.clientType}
           style={styles.picker}
-          onValueChange={(itemValue) =>
-            handleInputChange('clientType', itemValue)
+          onValueChange={(itemValue: string | boolean) =>
+            {
+              return handleInputChange('clientType', itemValue);
+            }
           }>
           <Picker.Item label="MVZ" value="MVZ" />
           <Picker.Item label="Público" value="Public" />
@@ -153,4 +156,15 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#3498db',
-   
+    paddingVertical: 12,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+  },
+});
+
+export default RegistrationScreen;
