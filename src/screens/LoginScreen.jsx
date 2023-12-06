@@ -5,20 +5,11 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-type RootStackParamList = {
-    PrivacyPolicy: undefined;
-    // Define otros componentes de tu stack de navegación aquí
-  };
-  
-  type LoginScreenNavigationProp = StackNavigationProp<
-    RootStackParamList,
-    'PrivacyPolicy'
-  >;//asi se seclaran las pantallas que vamos a llamr
-  
-  const LoginScreen: React.FC = () => {
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-    const navigation = useNavigation<LoginScreenNavigationProp>();
+
+  const LoginScreen = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigation = useNavigation();
   
     const handleLoginSuccess = () => {
       navigation.navigate('PrivacyPolicy');
@@ -82,7 +73,7 @@ type RootStackParamList = {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity onPress={() => console.log('Navegar a la pantalla de registro')}>
+      <TouchableOpacity onPress={handleRegisterAction}>
         <Text style={styles.registerText}>Registrarse</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => console.log('Navegar a la pantalla de recuperar contraseña')}>

@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const RegistrationScreen: React.FC = () => {
+const RegistrationScreen = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -25,7 +25,7 @@ const RegistrationScreen: React.FC = () => {
   });
 
 
-  const handleInputChange = (name: string, value: string | boolean) => {
+  const handleInputChange = (name, value) => {
     setFormData({ ...formData, [name]: value });
   };
 
@@ -59,7 +59,7 @@ const RegistrationScreen: React.FC = () => {
         <Picker
           selectedValue={formData.clientType}
           style={styles.picker}
-          onValueChange={(itemValue: string | boolean) =>
+          onValueChange={(itemValue) =>
             {
               return handleInputChange('clientType', itemValue);
             }
