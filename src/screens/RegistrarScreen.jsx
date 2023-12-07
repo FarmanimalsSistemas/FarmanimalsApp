@@ -111,8 +111,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   logo: {
-    width: 150, // Ajustar según el tamaño de tu logo
-    height: 50, // Ajustar según el tamaño de tu logo
+    width: 500, // Ajustar según el tamaño de tu logo
+    height: 150, // Ajustar según el tamaño de tu logo
     resizeMode: 'contain', // Esto asegura que el logo se escale correctamente
   },
   form: {
