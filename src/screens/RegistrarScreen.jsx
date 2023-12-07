@@ -1,103 +1,101 @@
-// src/screens/RegistrationScreen.tsx
+// RegistrationScreen.js
 import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { Picker } from '@react-native-picker/picker';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-  Switch, 
-} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+// Asegúrate de que RadioButton esté importado de la biblioteca correcta
+import { RadioButton } from 'react-native-paper';
 
 const RegistrationScreen = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    clientType: 'MVZ, Franquicatareo',
-    gender: 'Femenino',
+    customerType: 'Publico',
+    gender: 'Masculino',
     email: '',
+    birthday: '',
     password: '',
     confirmPassword: '',
-    acceptTerms: false,
   });
-
-
   const handleInputChange = (name, value) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // Lógica para manejar el registro
+  const handleSubmit = () => {
+    // Handle the form submission, validate data, etc.
+    console.log(formData);
+  };
+  // Funciones para manejar el formulario aquí...
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.inputGroup}>
-        <Icon name="user" size={20} style={styles.icon} />
+      <View style={styles.logoContainer}>
+        {/* Reemplazar con la imagen de tu logotipo */}
+        <Image source={require('../assets/images/Logotipo.png')} style={styles.logo} />
+      </View>
+     <View style={styles.form}>
         <TextInput
           style={styles.input}
           placeholder="Nombre(s)"
           onChangeText={(text) => handleInputChange('firstName', text)}
-          value={formData.firstName}
         />
-      </View>
-
-      <View style={styles.inputGroup}>
-        <Icon name="user" size={20} style={styles.icon} />
         <TextInput
           style={styles.input}
           placeholder="Apellido(s)"
           onChangeText={(text) => handleInputChange('lastName', text)}
-          value={formData.lastName}
         />
-      </View>
-
-      <Text style={styles.label}>Tipo de Cliente</Text>
-      <View style={styles.pickerGroup}>
-        <Icon name="briefcase" size={20} style={styles.icon} />
         <Picker
-          selectedValue={formData.clientType}
+          selectedValue={formData.customerType}
           style={styles.picker}
-          onValueChange={(itemValue) =>
-            {
-              return handleInputChange('clientType', itemValue);
-            }
-          }>
+          onValueChange={(itemValue) => handleInputChange('customerType', itemValue)}>
           <Picker.Item label="MVZ" value="MVZ" />
-          <Picker.Item label="Público" value="Public" />
+          <Picker.Item label="Publico" value="Publico" />
         </Picker>
-      </View>
-
-      <Text style={styles.label}>Género</Text>
-      <View style={styles.switchGroup}>
-        <Text style={styles.switchLabel}>Femenino</Text>
-        <Switch
-          value={formData.gender === 'Femenino'}
-          onValueChange={(value) =>
-            handleInputChange('gender', value ? 'Femenino' : 'Masculino')
-          }
+        {/* Radio buttons for gender selection */}
+        <View style={styles.radioContainer}>
+          <RadioButton
+            value="Femenino"
+            status={formData.gender === 'Femenino' ? 'checked' : 'unchecked'}
+            onPress={() => handleInputChange('gender', 'Femenino')}
+          />
+          <RadioButton
+            value="Masculino"
+            status={formData.gender === 'Masculino' ? 'checked' : 'unchecked'}
+            onPress={() => handleInputChange('gender', 'Masculino')}
+          />
+        </View>
+        <TextInput
+          style={styles.input}
+          placeholder="Correo"
+          onChangeText={(text) => handleInputChange('email', text)}
         />
-        <Text style={styles.switchLabel}>Masculino</Text>
-      </View>
-
-      {/* Repite para Correo, Fecha de Cumpleaños, Contraseña y Repetir Contraseña */}
-      
-      <View style={styles.termsGroup}>
-        <Switch
-          value={formData.acceptTerms}
-          onValueChange={(value) => handleInputChange('acceptTerms', value)}
+        {/* Date picker for birthday - Consider using a date picker library */}
+        <TextInput
+          style={styles.input}
+          placeholder="dd - mm - yyyy"
+          onChangeText={(text) => handleInputChange('birthday', text)}
         />
-        <Text style={styles.termsText}>
-          Acepto los Términos y Condiciones y el Aviso de Privacidad
-        </Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Contraseña"
+          secureTextEntry
+          onChangeText={(text) => handleInputChange('password', text)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Repetir contraseña"
+          secureTextEntry
+          onChangeText={(text) => handleInputChange('confirmPassword', text)}
+        />
+        {/* Accept terms */}
+        <View style={styles.termsContainer}>
+          <Text style={styles.termsText}>Acepto los Términos y Condiciones y el Aviso de Privacidad</Text>
+          {/* Checkbox component can be added here */}
+        </View>
+        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+          <Text style={styles.buttonText}>Registrar</Text>
+        </TouchableOpacity>
       </View>
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => console.log(formData)}>
-        <Text style={styles.buttonText}>Registrar</Text>
-      </TouchableOpacity>
     </ScrollView>
   );
 };
@@ -105,66 +103,53 @@ const RegistrationScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
     backgroundColor: '#fff',
   },
-  inputGroup: {
+  logoContainer: {
+    alignItems: 'center',
+    marginTop: 30,
+    marginBottom: 20,
+  },
+  logo: {
+    width: 150, // Ajustar según el tamaño de tu logo
+    height: 50, // Ajustar según el tamaño de tu logo
+    resizeMode: 'contain', // Esto asegura que el logo se escale correctamente
+  },
+  form: {
+    paddingHorizontal: 20,
+  },
+  inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    height: 48,
+    borderColor: '#C4C4C4',
+    borderWidth: 1,
+    borderRadius: 4,
     marginBottom: 20,
+    paddingLeft: 10,
+  },
+  input: {
+    flex: 1,
+    height: 48,
+    fontSize: 16,
+    color: '#333',
+    paddingLeft: 10,
   },
   icon: {
     marginRight: 10,
   },
-  input: {
-    flex: 1,
-    paddingVertical: 8,
-  },
-  pickerGroup: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  },
-  picker: {
-    flex: 1,
-  },
-  label: {
-    fontSize: 16,
-    color: '#000',
-    marginBottom: 8,
-  },
-  switchGroup: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 20,
-  },
-  switchLabel: {
-    fontSize: 16,
-  },
-  termsGroup: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  termsText: {
-    marginLeft: 10,
-    fontSize: 16,
-  },
   button: {
-    backgroundColor: '#3498db',
+    backgroundColor: '#007AFF', // Color del botón azul
     paddingVertical: 12,
-    borderRadius: 5,
+    borderRadius: 4,
     alignItems: 'center',
     marginBottom: 20,
   },
   buttonText: {
-    color: '#fff',
+    color: 'white',
     fontSize: 18,
   },
+  // ...otros estilos que necesitas...
 });
 
 export default RegistrationScreen;
