@@ -70,7 +70,7 @@ const RegistrationScreen = () => {
           { label: 'Franquiciatario', value: 'Franquiciatario' },
           { label: 'Cliente Institucional', value: 'Cliente Institucional' },
           { label: 'Empleado Institucional', value: 'Empleado Institucional' },
-          { label: 'Mayorista', value: 'Mayorista' },
+          { label: 'Mayorista', value: 'Empleado Institucional' },
 
         ]}
       />
@@ -172,10 +172,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 20, // Ajusta la distancia desde los últimos componentes
-  },
+  flexDirection: 'row',
+  justifyContent: 'center', // Centra los elementos horizontalmente
+  alignItems: 'center', // Centra los elementos verticalmente
+  marginTop: 20,
+  paddingHorizontal: 20, // Agrega espaciado horizontal
+},
   button: {
     paddingVertical: 10,
     paddingHorizontal: 20,
