@@ -65,8 +65,13 @@ const RegistrationScreen = () => {
         selectedValue={customerType}
         onValueChange={(itemValue, itemIndex) => setCustomerType(itemValue)}
         items={[
+          { label: 'Socio Amigo', value: 'Socio Amigo' },
           { label: 'MVZ', value: 'MVZ' },
-          { label: 'Publico', value: 'Publico' },
+          { label: 'Franquiciatario', value: 'Franquiciatario' },
+          { label: 'Cliente Institucional', value: 'Cliente Institucional' },
+          { label: 'Empleado Institucional', value: 'Empleado Institucional' },
+          { label: 'Mayorista', value: 'Mayorista' },
+
         ]}
       />
       <CustomRadioField
@@ -183,7 +188,7 @@ const styles = StyleSheet.create({
     borderColor: '#000',
     // Sombra para iOS
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 1.5,
   },
