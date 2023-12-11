@@ -23,6 +23,15 @@ const RegistrationScreen = () => {
     password: '',
     confirmPassword: '',
   });
+  const handleCancel = () => {
+    console.log('Cancelado');
+    // Aquí iría la lógica para manejar la acción de cancelar
+  };
+
+  const handleRegister = () => {
+    console.log('Registrado');
+    // Aquí iría la lógica para manejar la acción de registro
+  };
   const handleInputChange = (name, value) => {
     setFormData({ ...formData, [name]: value });
   };
@@ -39,6 +48,7 @@ const RegistrationScreen = () => {
         {/* Reemplazar con la imagen de tu logotipo */}
         <Image source={require('../assets/images/Logotipo.png')} style={styles.logo} />
       </View>
+      <View style={styles.form}>
       <CustomInputField
         icon={require('../assets/images/users-icon.png')} // Asegúrate de tener la imagen en tu proyecto
         title="Nombre(s)"
@@ -94,6 +104,15 @@ const RegistrationScreen = () => {
         placeholder="Repetir contraseña"
       />
        <TermsSwitch />
+       <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={handleCancel} style={[styles.button, styles.cancelButton]}>
+          <Text style={styles.buttonText}>Cancelar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleRegister} style={[styles.button, styles.registerButton]}>
+          <Text style={styles.buttonText}>Registrar</Text>
+        </TouchableOpacity>
+      </View>
+       </View>
     </ScrollView>
   );
 };
@@ -146,6 +165,35 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 18,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20, // Ajusta la distancia desde los últimos componentes
+  },
+  button: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    elevation: 2, // Sombra para Android
+  },
+  cancelButton: {
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#000',
+    // Sombra para iOS
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 1.5,
+  },
+  registerButton: {
+    backgroundColor: '#007AFF',
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: '#fff',
+    fontWeight: 'bold',
   },
   // ...otros estilos que necesitas...
 });

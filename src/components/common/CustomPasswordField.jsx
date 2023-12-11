@@ -22,9 +22,7 @@ const CustomPasswordField = ({ icon, title, ...rest }) => {
           secureTextEntry={secureTextEntry}
           {...rest}
         />
-        <TouchableOpacity onPress={toggleSecureEntry}>
-          <Icon name={secureTextEntry ? "eye-slash" : "eye"} size={20} color="#C4C4C4" />
-        </TouchableOpacity>
+        
       
     </View>
   );
