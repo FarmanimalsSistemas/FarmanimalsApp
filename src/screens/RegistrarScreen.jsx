@@ -1,12 +1,18 @@
 // RegistrationScreen.js
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { Picker } from '@react-native-picker/picker';
-// Asegúrate de que RadioButton esté importado de la biblioteca correcta
-import { RadioButton } from 'react-native-paper';
+import CustomInputField from '../components/common/CustomInputField'; 
+import CustomPickerField from '../components/common/CustomPickerField'; 
+import CustomRadioField from '../components/common/CustomRadioField'; 
+import CustomDateField from '../components/common/CustomDateField';
+import CustomPasswordField from '../components/common/CustomPasswordField';
+import TermsSwitch from '../components/common/CustomSwitchField';
 
 const RegistrationScreen = () => {
+  const [dateOfBirth, setDateOfBirth] = useState(new Date());
+  const [gender, setGender] = useState('Masculino');
+  const [customerType, setCustomerType] = useState('Publico');
+  const [password, setPassword] = useState('');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -33,69 +39,61 @@ const RegistrationScreen = () => {
         {/* Reemplazar con la imagen de tu logotipo */}
         <Image source={require('../assets/images/Logotipo.png')} style={styles.logo} />
       </View>
-     <View style={styles.form}>
-        <TextInput
-          style={styles.input}
-          placeholder="Nombre(s)"
-          onChangeText={(text) => handleInputChange('firstName', text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Apellido(s)"
-          onChangeText={(text) => handleInputChange('lastName', text)}
-        />
-        <Picker
-          selectedValue={formData.customerType}
-          style={styles.picker}
-          onValueChange={(itemValue) => handleInputChange('customerType', itemValue)}>
-          <Picker.Item label="MVZ" value="MVZ" />
-          <Picker.Item label="Publico" value="Publico" />
-        </Picker>
-        {/* Radio buttons for gender selection */}
-        <View style={styles.radioContainer}>
-          <RadioButton
-            value="Femenino"
-            status={formData.gender === 'Femenino' ? 'checked' : 'unchecked'}
-            onPress={() => handleInputChange('gender', 'Femenino')}
-          />
-          <RadioButton
-            value="Masculino"
-            status={formData.gender === 'Masculino' ? 'checked' : 'unchecked'}
-            onPress={() => handleInputChange('gender', 'Masculino')}
-          />
-        </View>
-        <TextInput
-          style={styles.input}
-          placeholder="Correo"
-          onChangeText={(text) => handleInputChange('email', text)}
-        />
-        {/* Date picker for birthday - Consider using a date picker library */}
-        <TextInput
-          style={styles.input}
-          placeholder="dd - mm - yyyy"
-          onChangeText={(text) => handleInputChange('birthday', text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Contraseña"
-          secureTextEntry
-          onChangeText={(text) => handleInputChange('password', text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Repetir contraseña"
-          secureTextEntry
-          onChangeText={(text) => handleInputChange('confirmPassword', text)}
-        />
-        {/* Accept terms */}
-        <View style={styles.termsContainer}>
-          <Text style={styles.termsText}>Acepto los Términos y Condiciones y el Aviso de Privacidad</Text>
-          {/* Checkbox component can be added here */}
-        </View>
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-          <Text style={styles.buttonText}>Registrar</Text>
-        </TouchableOpacity>
-      </View>
+      <CustomInputField
+        icon={require('../assets/images/users-icon.png')} // Asegúrate de tener la imagen en tu proyecto
+        title="Nombre(s)"
+        placeholder="nombre"
+      />
+     <CustomInputField
+        icon={require('../assets/images/users-icon.png')} // Asegúrate de tener la imagen en tu proyecto
+        title="Apellido(s)"
+        placeholder="apellidos"
+      />
+      <CustomPickerField
+        icon={require('../assets/images/client-icon.png')} // Asegúrate de tener la imagen en tu proyecto
+        title="Tipo de Cliente"
+        selectedValue={customerType}
+        onValueChange={(itemValue, itemIndex) => setCustomerType(itemValue)}
+        items={[
+          { label: 'MVZ', value: 'MVZ' },
+          { label: 'Publico', value: 'Publico' },
+        ]}
+      />
+      <CustomRadioField
+        title="Género"
+        selectedValue={gender}
+        onValueChange={(value) => setGender(value)}
+        options={[
+          { label: 'Masculino', value: 'Masculino' },
+          { label: 'Femenino', value: 'Femenino' },
+        ]}
+      />
+      <CustomInputField
+        icon={require('../assets/images/mail-icon.png')} // Asegúrate de tener la imagen en tu proyecto
+        title="Correo"
+        placeholder="example@email.com"
+      />
+      <CustomDateField
+        icon={require('../assets/images/calendar-icon.png')}
+        title="Fecha de Nacimiento"
+        date={dateOfBirth}
+        onDateChange={(newDate) => setDateOfBirth(newDate)}
+      />
+      <CustomPasswordField
+        icon={require('../assets/images/password-icon.png')}
+        title="Contraseña"
+        value={password}
+        onChangeText={setPassword}
+        placeholder="Introduce tu contraseña"
+      />
+      <CustomPasswordField
+        icon={require('../assets/images/password-icon.png')}
+        title="Repetir contraseña"
+        value={password}
+        onChangeText={setPassword}
+        placeholder="Repetir contraseña"
+      />
+       <TermsSwitch />
     </ScrollView>
   );
 };
@@ -107,8 +105,8 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     alignItems: 'center',
-    marginTop: 30,
-    marginBottom: 20,
+    marginTop: 5,
+    marginBottom: 10,
   },
   logo: {
     width: 500, // Ajustar según el tamaño de tu logo

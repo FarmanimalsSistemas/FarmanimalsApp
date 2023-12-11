@@ -4,7 +4,8 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'reac
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-
+import CustomPasswordField from '../components/common/CustomPasswordField';
+import CustomInputField from '../components/common/CustomInputField';
 
   const LoginScreen = () => {
     const [email, setEmail] = useState('');
@@ -34,28 +35,19 @@ import { StackNavigationProp } from '@react-navigation/stack';
       />
       <Text style={styles.welcomeText}>Bienvenido al Mundo Farmanimals</Text>
 
-      <View style={styles.inputContainer}>
-        <Icon name="email-outline" size={24} color="#000" style={styles.icon} />
-        <TextInput
-          placeholder="Usuario"
-          style={styles.input}
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-      </View>
-
-      <View style={styles.inputContainer}>
-        <Icon name="lock-outline" size={24} color="#000" style={styles.icon} />
-        <TextInput
-          placeholder="Contraseña"
-          secureTextEntry
-          style={styles.input}
-          value={password}
-          onChangeText={setPassword}
-        />
-      </View>
+      <CustomInputField
+        icon={require('../assets/images/mail-icon.png')} // Asegúrate de tener la imagen en tu proyecto
+        title="Usuario"
+        placeholder="nombre"
+      />
+<CustomPasswordField
+        icon={require('../assets/images/password-icon.png')}
+        title="Contraseña"
+        value={password}
+        onChangeText={setPassword}
+        placeholder="Introduce tu contraseña"
+      />
+      
 
       <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
         <Text style={styles.loginButtonText}>Iniciar Sesión</Text>
@@ -95,7 +87,7 @@ const styles = StyleSheet.create({
     width: 500, // Ajustar según tu logo
     height: 150, // Ajustar según tu logo
     resizeMode: 'contain',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   welcomeText: {
     fontSize: 18,
