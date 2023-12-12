@@ -57,13 +57,12 @@ import CustomSocialButtons from '../components/common/CustomSocialButtons';
 
       <View style={styles.socialLoginContainer}>
       <CustomSocialButtons
-        icon={require('../assets/images/Facebook.png')}
+        icon={require('../assets/images/facebook.png')}
+        facebookIcon={require('../assets/images/facebook.png')}
+        googleIcon={require('../assets/images/Google.png')}
         title="Facebook"   
       />
-       <CustomSocialButtons
-        icon={require('../assets/images/Google.png')}
-        title="Google"   
-      />
+       
 
       </View>
 

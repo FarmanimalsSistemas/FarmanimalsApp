@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Text, Image } from 'react-native';
 import { Button } from 'react-native-elements';
 
 
-const CustomSocialButtons = () => {
+const CustomSocialButtons = ({facebookIcon, googleIcon}) => {
     return (
       <View>
         <TouchableOpacity style={styles.socialButton}>
