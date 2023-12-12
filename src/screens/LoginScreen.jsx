@@ -79,11 +79,9 @@ import CustomSocialButtons from '../components/common/CustomSocialButtons';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 16,
-    backgroundColor: '#ffffff',
+    
+    
+    paddingHorizontal: 20,
   },
   logo: {
     width: 500, // Ajustar según tu logo
@@ -96,15 +94,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 40,
   },
-  inputContainer: {
-    flexDirection: 'row',
-    width: '90%',
-    borderBottomWidth: 1,
-    borderBottomColor: 'grey',
-    paddingBottom: 10,
-    marginBottom: 20,
-    alignItems: 'center',
-  },
   icon: {
     marginRight: 10,
   },
@@ -113,13 +102,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   loginButton: {
-    width: '80%',
+    width: '80%', // Mantiene el botón al 80% del ancho del contenedor
     backgroundColor: '#00ADEF',
     padding: 20,
     borderRadius: 5,
     alignItems: 'center',
+    alignSelf: 'center', // Asegura que el botón se centre en el contenedor padre
     marginBottom: 20,
   },
+
   loginButtonText: {
     color: 'white',
     fontSize: 18,
@@ -127,6 +118,8 @@ const styles = StyleSheet.create({
   },
   socialLoginContainer: {
     flexDirection: 'row',
+    justifyContent: 'center', // Centra los elementos hijos horizontalmente
+    alignItems: 'center', // Centra los elementos hijos verticalmente si es necesario
     marginBottom: 20,
   },
   socialButton: {
