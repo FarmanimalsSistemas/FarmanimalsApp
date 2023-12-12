@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import CustomPasswordField from '../components/common/CustomPasswordField';
 import CustomInputField from '../components/common/CustomInputField';
+import CustomSocialButtons from '../components/common/CustomSocialButtons';
+
 
   const LoginScreen = () => {
     const [email, setEmail] = useState('');
@@ -40,7 +42,7 @@ import CustomInputField from '../components/common/CustomInputField';
         title="Usuario"
         placeholder="nombre"
       />
-<CustomPasswordField
+    <CustomPasswordField
         icon={require('../assets/images/password-icon.png')}
         title="Contraseña"
         value={password}
@@ -54,17 +56,18 @@ import CustomInputField from '../components/common/CustomInputField';
       </TouchableOpacity>
 
       <View style={styles.socialLoginContainer}>
-        <TouchableOpacity style={[styles.socialButton, styles.facebook]}>
-          {/* Iconos de redes sociales */}
-          <Icon name="facebook" size={24} color="#fff" />
-          <Text style={styles.socialText}>Facebook</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.socialButton, styles.google]}>
-          <Icon name="google" size={24} color="#fff" />
-          <Text style={styles.socialText}>Google</Text>
-        </TouchableOpacity>
+      <CustomSocialButtons
+        icon={require('../assets/images/Facebook.png')}
+        title="Facebook"   
+      />
+       <CustomSocialButtons
+        icon={require('../assets/images/Google.png')}
+        title="Google"   
+      />
+
       </View>
 
+      
       <TouchableOpacity onPress={handleRegisterAction}>
         <Text style={styles.registerText}>Registrarse</Text>
       </TouchableOpacity>
@@ -90,9 +93,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   welcomeText: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 40,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -111,7 +114,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   loginButton: {
-    width: '90%',
+    width: '80%',
     backgroundColor: '#00ADEF',
     padding: 20,
     borderRadius: 5,
@@ -138,7 +141,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3b5998',
   },
   google: {
-    backgroundColor: 'red',
+    backgroundColor: 'gray',
   },
   socialText: {
     color: '#ffffff',

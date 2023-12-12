@@ -7,8 +7,10 @@ import CustomRadioField from '../components/common/CustomRadioField';
 import CustomDateField from '../components/common/CustomDateField';
 import CustomPasswordField from '../components/common/CustomPasswordField';
 import TermsSwitch from '../components/common/CustomSwitchField';
+import { useNavigation } from '@react-navigation/native';
 
 const RegistrationScreen = () => {
+  const navigation = useNavigation();
   const [dateOfBirth, setDateOfBirth] = useState(new Date());
   const [gender, setGender] = useState('Masculino');
   const [customerType, setCustomerType] = useState('Publico');
@@ -23,10 +25,12 @@ const RegistrationScreen = () => {
     password: '',
     confirmPassword: '',
   });
+  
   const handleCancel = () => {
     console.log('Cancelado');
     // Aquí iría la lógica para manejar la acción de cancelar
   };
+  
 
   const handleRegister = () => {
     console.log('Registrado');
@@ -70,7 +74,7 @@ const RegistrationScreen = () => {
           { label: 'Franquiciatario', value: 'Franquiciatario' },
           { label: 'Cliente Institucional', value: 'Cliente Institucional' },
           { label: 'Empleado Institucional', value: 'Empleado Institucional' },
-          { label: 'Mayorista', value: 'Empleado Institucional' },
+          { label: 'Mayorista', value: 'Mayorista' },
 
         ]}
       />
