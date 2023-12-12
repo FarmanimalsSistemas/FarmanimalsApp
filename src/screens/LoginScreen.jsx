@@ -79,20 +79,20 @@ import CustomSocialButtons from '../components/common/CustomSocialButtons';
 
 const styles = StyleSheet.create({
   container: {
-    
-    
     paddingHorizontal: 20,
   },
   logo: {
-    width: 500, // Ajustar según tu logo
-    height: 150, // Ajustar según tu logo
+    width: 350, // Ajustar según tu logo
+    height: 160, // Ajustar según tu logo
     resizeMode: 'contain',
     marginBottom: 10,
   },
   welcomeText: {
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 40,
+    color: 'black',
+    marginBottom: 20,
+    textAlign: 'center', // Centra el texto horizontalmente
   },
   icon: {
     marginRight: 10,
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   loginButton: {
     width: '80%', // Mantiene el botón al 80% del ancho del contenedor
     backgroundColor: '#00ADEF',
-    padding: 20,
+    padding: 10,
     borderRadius: 5,
     alignItems: 'center',
     alignSelf: 'center', // Asegura que el botón se centre en el contenedor padre
@@ -129,12 +129,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     alignItems: 'center',
   },
-  facebook: {
-    backgroundColor: '#3b5998',
-  },
-  google: {
-    backgroundColor: 'gray',
-  },
   socialText: {
     color: '#ffffff',
     marginLeft: 10,
@@ -143,11 +137,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#0000FF',
     marginBottom: 5,
+    textAlign: 'center', // Centra el texto horizontalmente
   },
   forgotPasswordText: {
     fontSize: 16,
     color: '#0000FF',
     marginBottom: 5,
+    textAlign: 'center', // Centra el texto horizontalmente
   },
 });
 

@@ -26,18 +26,18 @@ const CustomSocialButtons = ({facebookIcon, googleIcon}) => {
     socialButton: {
       flexDirection: 'row',
       alignItems: 'center',
-      backgroundColor: '#3b5998', // Color de fondo de Facebook
-      padding: 10,
-      borderRadius: 5,
+      backgroundColor: '#99D2F5', // Color de fondo de Facebook
+      padding: 8,
+      borderRadius: 50,
       marginVertical: 10,
     },
     icon: {
-      width: 24, // Ancho de la imagen
-      height: 24, // Alto de la imagen
+      width: 25, // Ancho de la imagen
+      height: 25, // Alto de la imagen
       marginRight: 10, // Espaciado entre la imagen y el texto
     },
     socialText: {
-      color: '#fff', // Color del texto
+      color: 'black', // Color del texto
       fontSize: 16, // Tamaño del texto
     },
   };

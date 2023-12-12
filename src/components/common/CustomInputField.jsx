@@ -21,12 +21,12 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 4,
+    marginBottom: 6,
   },
   icon: {
     width: 24,
     height: 24,
-    marginRight: 8,
+    marginRight: 9,
   },
   inputTitle: {
     fontSize: 16,
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   input: {
-    width: '90%', // Ajusta este valor para cambiar el ancho del TextInput
-    alignSelf: 'center', // Centra el TextInput en la pantalla
+    width: '100%', // Ajusta este valor para cambiar el ancho del TextInput
+    textAlign: 'center', // Centra el texto horizontalmente
     borderWidth: 1,
     borderColor: '#C4C4C4',
     borderRadius: 25, // Ajusta este valor para controlar la redondez de las esquinas

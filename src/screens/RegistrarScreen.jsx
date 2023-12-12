@@ -1,127 +1,47 @@
 // RegistrationScreen.js
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
-import CustomInputField from '../components/common/CustomInputField'; 
-import CustomPickerField from '../components/common/CustomPickerField'; 
-import CustomRadioField from '../components/common/CustomRadioField'; 
-import CustomDateField from '../components/common/CustomDateField';
-import CustomPasswordField from '../components/common/CustomPasswordField';
-import TermsSwitch from '../components/common/CustomSwitchField';
-import { useNavigation } from '@react-navigation/native';
+import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 
 const RegistrationScreen = () => {
-  const navigation = useNavigation();
-  const [dateOfBirth, setDateOfBirth] = useState(new Date());
-  const [gender, setGender] = useState('Masculino');
-  const [customerType, setCustomerType] = useState('Publico');
-  const [password, setPassword] = useState('');
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    customerType: 'Publico',
-    gender: 'Masculino',
-    email: '',
-    birthday: '',
-    password: '',
-    confirmPassword: '',
-  });
-  
-  const handleCancel = () => {
-    console.log('Cancelado');
-    // Aquí iría la lógica para manejar la acción de cancelar
-  };
-  
+  const [customerType, setCustomerType] = useState('Publico General');
 
-  const handleRegister = () => {
-    console.log('Registrado');
-    // Aquí iría la lógica para manejar la acción de registro
-  };
-  const handleInputChange = (name, value) => {
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = () => {
-    // Handle the form submission, validate data, etc.
-    console.log(formData);
-  };
-  // Funciones para manejar el formulario aquí...
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.logoContainer}>
-        {/* Reemplazar con la imagen de tu logotipo */}
-        <Image source={require('../assets/images/Logotipo.png')} style={styles.logo} />
-      </View>
-      <View style={styles.form}>
-      <CustomInputField
-        icon={require('../assets/images/users-icon.png')} // Asegúrate de tener la imagen en tu proyecto
-        title="Nombre(s)"
-        placeholder="nombre"
+    <ScrollView contentContainerStyle={styles.container}>
+      <Image
+        source={require('../assets/images/Logotipo.png')} // Reemplaza con la ubicación de tu logo
+        style={styles.logo}
       />
-     <CustomInputField
-        icon={require('../assets/images/users-icon.png')} // Asegúrate de tener la imagen en tu proyecto
-        title="Apellido(s)"
-        placeholder="apellidos"
-      />
-      <CustomPickerField
-        icon={require('../assets/images/client-icon.png')} // Asegúrate de tener la imagen en tu proyecto
-        title="Tipo de Cliente"
-        selectedValue={customerType}
-        onValueChange={(itemValue, itemIndex) => setCustomerType(itemValue)}
-        items={[
-          { label: 'Socio Amigo', value: 'Socio Amigo' },
-          { label: 'MVZ', value: 'MVZ' },
-          { label: 'Franquiciatario', value: 'Franquiciatario' },
-          { label: 'Cliente Institucional', value: 'Cliente Institucional' },
-          { label: 'Empleado Institucional', value: 'Empleado Institucional' },
-          { label: 'Mayorista', value: 'Mayorista' },
+      <Text style={styles.welcomeText}>Bienvenido a la Farmacia de tu mascota</Text>
+      <Text style={styles.title}>Ingresa tus Datos</Text>
 
-        ]}
+      <Image
+        source={require('../assets/images/Imagen1.png')} // Reemplaza con tu imagen de animales
+        style={styles.animalsImage}
       />
-      <CustomRadioField
-        title="Género"
-        selectedValue={gender}
-        onValueChange={(value) => setGender(value)}
-        options={[
-          { label: 'Masculino', value: 'Masculino' },
-          { label: 'Femenino', value: 'Femenino' },
-        ]}
-      />
-      <CustomInputField
-        icon={require('../assets/images/mail-icon.png')} // Asegúrate de tener la imagen en tu proyecto
-        title="Correo"
-        placeholder="example@email.com"
-      />
-      <CustomDateField
-        icon={require('../assets/images/calendar-icon.png')}
-        title="Fecha de Nacimiento"
-        date={dateOfBirth}
-        onDateChange={(newDate) => setDateOfBirth(newDate)}
-      />
-      <CustomPasswordField
-        icon={require('../assets/images/password-icon.png')}
-        title="Contraseña"
-        value={password}
-        onChangeText={setPassword}
-        placeholder="Introduce tu contraseña"
-      />
-      <CustomPasswordField
-        icon={require('../assets/images/password-icon.png')}
-        title="Repetir contraseña"
-        value={password}
-        onChangeText={setPassword}
-        placeholder="Repetir contraseña"
-      />
-       <TermsSwitch />
-       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={handleCancel} style={[styles.button, styles.cancelButton]}>
-          <Text style={styles.buttonText}>Cancelar</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleRegister} style={[styles.button, styles.registerButton]}>
-          <Text style={styles.buttonText}>Registrar</Text>
-        </TouchableOpacity>
+
+      <View style={styles.dropdownContainer}>
+        <Text style={styles.dropdownLabel}>Tipo de Cliente</Text>
+        <Picker
+          selectedValue={customerType}
+          onValueChange={(itemValue, itemIndex) => setCustomerType(itemValue)}
+          style={styles.picker}
+          dropdownIconColor={'#000'}
+        >
+          <Picker.Item label="Publico General" value="Publico General" />
+          <Picker.Item label="Socio Amigo" value="Socio Amigo" />
+          <Picker.Item label="MVZ" value="MVZ" />
+          <Picker.Item label="Cliente Institucional" value="Cliente Institucional" />
+          <Picker.Item label="Empleado Institucional" value="Empleado Institucional" />
+          <Picker.Item label="Mayorista" value="Mayorista" />
+
+          
+          {/* ...otros Picker.Item... */}
+        </Picker>
       </View>
-       </View>
+
+      {/* ...otros componentes... */}
     </ScrollView>
   );
 };
@@ -129,84 +49,52 @@ const RegistrationScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-  },
-  logoContainer: {
     alignItems: 'center',
-    marginTop: 5,
-    marginBottom: 10,
+    padding: 20,
+    backgroundColor: '#fff',
   },
   logo: {
-    width: 500, // Ajustar según el tamaño de tu logo
-    height: 150, // Ajustar según el tamaño de tu logo
-    resizeMode: 'contain', // Esto asegura que el logo se escale correctamente
+    width: 350, // Ajustar según tu logo
+    height: 160, // Ajustar según tu logo
+    resizeMode: 'contain',
+    marginBottom: 10,
   },
-  form: {
-    paddingHorizontal: 20,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: 48,
-    borderColor: '#C4C4C4',
-    borderWidth: 1,
-    borderRadius: 4,
-    marginBottom: 20,
-    paddingLeft: 10,
-  },
-  input: {
-    flex: 1,
-    height: 48,
-    fontSize: 16,
-    color: '#333',
-    paddingLeft: 10,
-  },
-  icon: {
-    marginRight: 10,
-  },
-  button: {
-    backgroundColor: '#007AFF', // Color del botón azul
-    paddingVertical: 12,
-    borderRadius: 4,
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  buttonText: {
-    color: 'white',
+  welcomeText: {
     fontSize: 18,
-  },
-  buttonContainer: {
-  flexDirection: 'row',
-  justifyContent: 'center', // Centra los elementos horizontalmente
-  alignItems: 'center', // Centra los elementos verticalmente
-  marginTop: 20,
-  paddingHorizontal: 20, // Agrega espaciado horizontal
-},
-  button: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    elevation: 2, // Sombra para Android
-  },
-  cancelButton: {
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#000',
-    // Sombra para iOS
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 1.5,
-  },
-  registerButton: {
-    backgroundColor: '#007AFF',
-  },
-  buttonText: {
-    textAlign: 'center',
-    color: '#fff',
     fontWeight: 'bold',
+    color: 'black',
+    textAlign: 'center',
+    marginBottom: 10,
   },
-  // ...otros estilos que necesitas...
+  title: {
+    fontSize: 19,
+    color: '#00AEDD',
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  animalsImage: {
+    width: 600, // Ajusta esto según tus necesidades
+    height: 200, // Ajusta esto según tus necesidades
+    resizeMode: 'contain',
+    marginBottom: 20,
+  },
+  dropdownContainer: {
+    width: '100%',
+    borderWidth: 1,
+    borderColor: '#CCCCCC',
+    borderRadius: 4,
+    marginBottom: 20,
+  },
+  dropdownLabel: {
+    fontSize: 16,
+    padding: 10,
+    color: '#000',
+    backgroundColor: '#00AEDD',
+  },
+  picker: {
+    width: '100%',
+  },
+  // ... otros estilos que necesites ...
 });
 
 export default RegistrationScreen;
