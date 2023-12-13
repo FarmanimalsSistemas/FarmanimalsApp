@@ -2,10 +2,28 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { useNavigation } from '@react-navigation/native';
 
 const RegistrationScreen = () => {
   const [customerType, setCustomerType] = useState('Publico General');
+  const navigation = useNavigation();
 
+  const handleValueChange = (itemValue) => {
+    setCustomerType(itemValue);
+
+    // Aquí es donde manejas la navegación basada en el valor seleccionado
+    switch (itemValue) {
+      case 'Publico General':
+        // Navega a la pantalla para 'Publico General'
+        navigation.navigate('PublicoGScreen');
+        break;
+      case 'Socio Amigo':
+        // Navega a la pantalla para 'Socio Amigo'
+        navigation.navigate('SocioAmigoScreen');
+        break;
+      // Agrega casos adicionales para otros valores de 'customerType'
+    }
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -25,7 +43,7 @@ const RegistrationScreen = () => {
         <Text style={styles.dropdownLabel}>Tipo de Cliente</Text>
         <Picker
           selectedValue={customerType}
-          onValueChange={(itemValue, itemIndex) => setCustomerType(itemValue)}
+          onValueChange={(itemValue, itemIndex) => handleValueChange(itemValue)}
           style={styles.picker}
           dropdownIconColor={'#000'}
         >
