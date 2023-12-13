@@ -5,7 +5,7 @@ import { Picker } from '@react-native-picker/picker';
 import { useNavigation } from '@react-navigation/native';
 
 const RegistrationScreen = () => {
-  const [customerType, setCustomerType] = useState('Publico General');
+  const [customerType, setCustomerType] = useState('Selecciona un tipo');
   const navigation = useNavigation();
 
   const handleValueChange = (itemValue) => {
@@ -47,6 +47,7 @@ const RegistrationScreen = () => {
           style={styles.picker}
           dropdownIconColor={'#000'}
         >
+          <Picker.Item label="Selecciona un tipo de cliente" value="" />
           <Picker.Item label="Publico General" value="Publico General" />
           <Picker.Item label="Socio Amigo" value="Socio Amigo" />
           <Picker.Item label="MVZ" value="MVZ" />
