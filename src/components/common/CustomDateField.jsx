@@ -48,6 +48,7 @@ const CustomDateField = ({ icon, title, date, onDateChange }) => {
 const styles = StyleSheet.create({
   dateFieldContainer: {
     marginBottom: 25,
+    
   },
   row: {
     flexDirection: 'row',

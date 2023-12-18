@@ -68,16 +68,19 @@ const PublicoGScreen = () => {
           { label: 'Femenino', value: 'Femenino' },
         ]}
       />
-      <CustomInputField
-        icon={require('../assets/images/mail-icon.png')} // Asegúrate de tener la imagen en tu proyecto
-        title="Correo"
-        placeholder="example@email.com"
-      />
+      
       <CustomDateField
         icon={require('../assets/images/calendar-icon.png')}
         title="Fecha de Nacimiento"
         date={dateOfBirth}
         onDateChange={(newDate) => setDateOfBirth(newDate)}
+        
+      />
+      <Text style={styles.welcomeText}>Para formar parte de la  App Farmanimals, necesitas ser mayor de 13 años.</Text>
+      <CustomInputField
+        icon={require('../assets/images/mail-icon.png')} // Asegúrate de tener la imagen en tu proyecto
+        title="Correo"
+        placeholder="example@email.com"
       />
       <CustomPasswordField
         icon={require('../assets/images/password-icon.png')}
@@ -86,6 +89,8 @@ const PublicoGScreen = () => {
         onChangeText={setPassword}
         placeholder="Introduce tu contraseña"
       />
+      <Text style={styles.welcomeText}>Contraseña con al menos 8 caracteres, una mayúscula, no  numeros consecutivos</Text>
+
       <CustomPasswordField
         icon={require('../assets/images/password-icon.png')}
         title="Repetir contraseña"
@@ -110,6 +115,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  welcomeText: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    color: 'red',
+    marginBottom: 20,
+    textAlign: 'center', // Centra el texto horizontalmente
+  },
   logoContainer: {
     alignItems: 'center',
     marginTop: 5,
@@ -121,7 +133,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain', // Esto asegura que el logo se escale correctamente
   },
   form: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 30,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -146,7 +158,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#007AFF', // Color del botón azul
     paddingVertical: 12,
-    borderRadius: 4,
+    borderRadius: 3,
     alignItems: 'center',
     marginBottom: 20,
   },
@@ -158,25 +170,16 @@ const styles = StyleSheet.create({
   flexDirection: 'row',
   justifyContent: 'center', // Centra los elementos horizontalmente
   alignItems: 'center', // Centra los elementos verticalmente
-  marginTop: 20,
+  marginTop: 8,
   paddingHorizontal: 20, // Agrega espaciado horizontal
 },
   button: {
     paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: 30,
     borderRadius: 5,
     elevation: 2, // Sombra para Android
   },
-  cancelButton: {
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#000',
-    // Sombra para iOS
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 1.5,
-  },
+
   registerButton: {
     backgroundColor: '#007AFF',
   },

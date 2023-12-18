@@ -17,9 +17,9 @@ const RegistrationScreen = () => {
         // Navega a la pantalla para 'Publico General'
         navigation.navigate('PublicoGScreen');
         break;
-      case 'Socio Amigo':
+      case 'MVZ':
         // Navega a la pantalla para 'Socio Amigo'
-        navigation.navigate('SocioAmigoScreen');
+        navigation.navigate('MVZScreen');
         break;
       // Agrega casos adicionales para otros valores de 'customerType'
     }
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 350, // Ajustar según tu logo
     height: 160, // Ajustar según tu logo
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     marginBottom: 10,
   },
   welcomeText: {
