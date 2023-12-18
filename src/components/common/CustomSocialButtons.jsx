@@ -28,7 +28,7 @@ const CustomSocialButtons = ({facebookIcon, googleIcon}) => {
       alignItems: 'center',
       backgroundColor: '#99D2F5', // Color de fondo de Facebook
       padding: 8,
-      borderRadius: 50,
+      borderRadius: 60,
       marginVertical: 10,
     },
     icon: {
@@ -38,7 +38,7 @@ const CustomSocialButtons = ({facebookIcon, googleIcon}) => {
     },
     socialText: {
       color: 'black', // Color del texto
-      fontSize: 16, // Tamaño del texto
+      fontSize: 17, // Tamaño del texto
     },
   };
   

@@ -25,10 +25,6 @@ const PublicoGScreen = () => {
     confirmPassword: '',
   });
   
-  const handleCancel = () => {
-    console.log('Cancelado');
-    // Aquí iría la lógica para manejar la acción de cancelar
-  };
   
 
   const handleRegister = () => {
@@ -62,21 +58,7 @@ const PublicoGScreen = () => {
         title="Apellido(s)"
         placeholder="apellidos"
       />
-      <CustomPickerField
-        icon={require('../assets/images/client-icon.png')} // Asegúrate de tener la imagen en tu proyecto
-        title="Tipo de Cliente"
-        selectedValue={customerType}
-        onValueChange={(itemValue, itemIndex) => setCustomerType(itemValue)}
-        items={[
-          { label: 'Socio Amigo', value: 'Socio Amigo' },
-          { label: 'MVZ', value: 'MVZ' },
-          { label: 'Franquiciatario', value: 'Franquiciatario' },
-          { label: 'Cliente Institucional', value: 'Cliente Institucional' },
-          { label: 'Empleado Institucional', value: 'Empleado Institucional' },
-          { label: 'Mayorista', value: 'Mayorista' },
-
-        ]}
-      />
+     
       <CustomRadioField
         title="Género"
         selectedValue={gender}
@@ -113,9 +95,7 @@ const PublicoGScreen = () => {
       />
        <TermsSwitch />
        <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={handleCancel} style={[styles.button, styles.cancelButton]}>
-          <Text style={styles.buttonText}>Cancelar</Text>
-        </TouchableOpacity>
+        
         <TouchableOpacity onPress={handleRegister} style={[styles.button, styles.registerButton]}>
           <Text style={styles.buttonText}>Registrar</Text>
         </TouchableOpacity>

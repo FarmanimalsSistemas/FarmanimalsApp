@@ -80,6 +80,7 @@ import CustomSocialButtons from '../components/common/CustomSocialButtons';
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
+    backgroundColor: 'white',
   },
   logo: {
     width: 350, // Ajustar según tu logo

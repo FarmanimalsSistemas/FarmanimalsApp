@@ -9,7 +9,7 @@ const PrivacyPolicyScreen = () => {
       <Text style={styles.header}>Bienvenido al Mundo Farmanimals</Text>
       
       <View style={styles.alertContainer}>
-        <Icon name="alert" size={30} color="#E74C3C" style={styles.alertIcon} />
+       
         <Text style={styles.alertText}>¡¡¡Alerta Aviso de privacidad!!!</Text>
       </View>
 
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: 'black',
     textAlign: 'center',
     marginTop: 20,
     marginBottom: 10,
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   alertText: {
-    fontSize: 18,
+    fontSize: 25,
     fontWeight: 'bold',
     color: '#E74C3C',
   },
