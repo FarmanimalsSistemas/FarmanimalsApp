@@ -1,43 +1,61 @@
-import React, { useState } from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, TextInput, StyleSheet, Image } from 'react-native';
 
-const PhoneInput = ({ placeholder, onChange }) => {
-  const [phoneNumber, setPhoneNumber] = useState('');
-
-  // Esta función se asegura de que sólo se ingresen números
-  const handlePhoneChange = (text) => {
-    const cleanedNumber = text.replace(/[^0-9]/g, '');
-    setPhoneNumber(cleanedNumber);
-    if (onChange) onChange(cleanedNumber);
+const CustomNumberInputField = ({ icon, title, onChangeText, ...rest }) => {
+  const handleInputChange = (text) => {
+    // Asegúrate de que solo se ingresen números
+    const numericText = text.replace(/[^0-9]/g, '');
+    onChangeText(numericText);
   };
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        onChangeText={handlePhoneChange}
-        value={phoneNumber}
-        placeholder={placeholder}
-        keyboardType="phone-pad"
-        maxLength={10} // Ajustar según la longitud deseada
+    <View style={styles.inputFieldContainer}>
+      <View style={styles.row}>
+        {icon && <Image source={icon} style={styles.icon} />}
+        <Text style={styles.inputTitle}>{title}</Text>
+      </View>
+      <TextInput 
+        style={styles.input} 
+        keyboardType="numeric" 
+        onChangeText={handleInputChange}
+        {...rest} 
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    // Estilos del contenedor, si es necesario
+  inputFieldContainer: {
+    marginBottom: 25,
+  },
+  row: {
+    flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center', // Centra los elementos de la fila horizontalmente
+      marginBottom: 4,
+  },
+  icon: {
+    width: 24,
+    height: 24,
+    marginRight: 9,
+  },
+  inputTitle: {
+    fontSize: 16,
+      fontWeight: 'bold',
+      color: '#333',
+      textAlign: 'center',
   },
   input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 5,
-    marginVertical: 10,
+    width: '90%', // Ajusta este valor para cambiar el ancho del TextInput
+      alignSelf: 'center', // Centra el TextInput en la pantalla
+      borderWidth: 1,
+      borderColor: '#C4C4C4',
+      borderRadius: 25, // Ajusta este valor para controlar la redondez de las esquinas
+      padding: 10,
+      fontSize: 16,
+      color: '#333',
   },
-  // Puedes añadir más estilos si es necesario
+  // ...otros estilos si es necesario...
 });
 
-export default PhoneInput;
+export default CustomNumberInputField;

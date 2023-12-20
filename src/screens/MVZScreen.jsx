@@ -1,24 +1,9 @@
 import React from 'react';
-import { View, TextInput, Text, TouchableOpacity, StyleSheet, Image, ScrollView } from 'react-native';
-import PhoneInput from '../components/common/CustomPhoneInput'
-
+import { Text, TouchableOpacity, StyleSheet, Image, ScrollView } from 'react-native';
+import CustomNumberInputField from '../components/common/CustomPhoneInput'
+import CustomFileInput from '../components/common/CustomFileInput'
 
 const MVZScreen = () => {
-  const handleSelectFile = async () => {
-    try {
-      const response = await DocumentPicker.pick({
-        type: [DocumentPicker.types.allFiles],
-      });
-      // Haz algo con el archivo seleccionado
-      console.log(response);
-    } catch (error) {
-      if (DocumentPicker.isCancel(error)) {
-        // El usuario canceló la selección de archivos
-      } else {
-        throw error;
-      }
-    }
-  };
 
   return (
     <ScrollView style={styles.container}>
@@ -26,29 +11,31 @@ const MVZScreen = () => {
         source={require('../assets/images/Logotipo.png')} // Reemplaza con la ruta a tu logo
         style={styles.logo}
       />
-      <PhoneInput
-        placeholder="Ingresa tu teléfono"
-        onChange={(number) => {
-        console.log('Número de teléfono:', number);
-    }}
-    />
+      <Text style={styles.headerTitle}>Carga tus datos MVZ en formato PDF O JPG</Text>
+      <CustomNumberInputField
+  icon={require('../assets/images/phone-icon.png')} // Reemplaza con la ruta a tu icono
+  title="Número de Teléfono"
+  onChangeText={(text) => console.log('Número de teléfono:', text)}
+  // ...otros props que necesites...
+/>
       {/* Resto de tu UI */}
-      <TouchableOpacity onPress={handleSelectFile} style={styles.fileInput}>
-        <Text style={styles.fileInputText}>Anexa tu Cédula Profesional</Text>
-        {/* Icono y texto */}
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handleSelectFile} style={styles.fileInput}>
-        <Text style={styles.fileInputText}>Anexa tu Comprobante de Domicilío</Text>
-        {/* Icono y texto */}
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handleSelectFile} style={styles.fileInput}>
-        <Text style={styles.fileInputText}>Anexa tu INE</Text>
-        {/* Icono y texto */}
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handleSelectFile} style={styles.fileInput}>
-        <Text style={styles.fileInputText}>Anexa tu Cedula Fiscal</Text>
-        {/* Icono y texto */}
-      </TouchableOpacity>
+      
+      <CustomFileInput
+        icon={require('../assets/images/upload-icon.png')}
+        title="Anexa tu Cédula Profesional"
+      />
+      <CustomFileInput
+        icon={require('../assets/images/upload-icon.png')}
+        title="Anexa tu Comprobante de Domicilío"
+      />
+      <CustomFileInput
+        icon={require('../assets/images/upload-icon.png')}
+        title="Anexa tu INE"
+      />
+      <CustomFileInput
+        icon={require('../assets/images/upload-icon.png')}
+        title="Anexa tu Cedula Fiscal"
+      />
       {/* Repite los botones para otros archivos */}
       <TouchableOpacity style={styles.saveButton}>
         <Text style={styles.saveButtonText}>Guardar</Text>
@@ -69,30 +56,32 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     alignSelf: 'center',
   },
-  fileInput: {
-    backgroundColor: '#E8E8E8',
-    padding: 15,
-    marginVertical: 10,
-    borderRadius: 5,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  fileInputText: {
-    color: '#000',
-  },
+
   // Estilos para iconos y botones
   saveButton: {
-    backgroundColor: '#00ADEF',
-    borderRadius: 5,
-    padding: 15,
+    backgroundColor: '#00ADEF', // Un tono de azul, cámbialo según tu paleta de colores
+    paddingVertical: 15, // Aumenta la altura del botón
+    paddingHorizontal: 20, // Aumenta el ancho del botón si es necesario
+    borderRadius: 25, // Aumenta para bordes más redondeados
     alignItems: 'center',
-    marginTop: 20,
+    justifyContent: 'center', // Asegura que el texto del botón esté centrado
+    width: '90%', // O un ancho fijo si prefieres
+    alignSelf: 'center', // Centra el botón en el contenedor
+    marginTop: 20, // Espacio desde el último elemento
+    marginBottom: 30, // Espacio antes del final del ScrollView
   },
+
   saveButtonText: {
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  headerTitle: {
+    fontSize: 18, // Aumenta el tamaño de la fuente
+    fontWeight: 'bold',
+    color: 'red', // Cambia el color a azul
+    marginBottom: 20,
+    textAlign: 'center',
   },
   // Añade estilos para los iconos, textos y otros elementos según sea necesario
 });
