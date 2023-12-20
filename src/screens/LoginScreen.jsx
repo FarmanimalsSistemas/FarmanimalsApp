@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import CustomPasswordField from '../components/common/CustomPasswordField';
 import CustomInputField from '../components/common/CustomInputField';
-import CustomSocialButtons from '../components/common/CustomSocialButtons';
+
 
 
   const LoginScreen = () => {
@@ -33,14 +33,19 @@ import CustomSocialButtons from '../components/common/CustomSocialButtons';
     <View style={styles.container}>
       <Image
         source={require('../assets/images/Logotipo.png')} // Reemplaza con la ubicación de tu logo
-        style={styles.logo}
+        style={styles.imageStyle}
       />
+
       <Text style={styles.welcomeText}>Bienvenido al Mundo Farmanimals</Text>
+      <Image
+        source={require('../assets/images/login.png')} // Asegúrate de cambiar 'tu-imagen.png' por el nombre correcto de tu archivo de imagen
+        style={styles.imageStyle}
+      />
 
       <CustomInputField
         icon={require('../assets/images/mail-icon.png')} // Asegúrate de tener la imagen en tu proyecto
         title="Usuario"
-        placeholder="nombre"
+        placeholder="Correo"
       />
     <CustomPasswordField
         icon={require('../assets/images/password-icon.png')}
@@ -55,17 +60,6 @@ import CustomSocialButtons from '../components/common/CustomSocialButtons';
         <Text style={styles.loginButtonText}>Iniciar Sesión</Text>
       </TouchableOpacity>
 
-      <View style={styles.socialLoginContainer}>
-      <CustomSocialButtons
-        icon={require('../assets/images/facebook.png')}
-        facebookIcon={require('../assets/images/facebook.png')}
-        googleIcon={require('../assets/images/Google.png')}
-        title="Facebook"   
-      />
-       
-
-      </View>
-
       
       <TouchableOpacity onPress={handleRegisterAction}>
         <Text style={styles.registerText}>Registrarse</Text>
@@ -79,12 +73,20 @@ import CustomSocialButtons from '../components/common/CustomSocialButtons';
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
-    backgroundColor: 'white',
+    flex: 1,
+    padding: 16,
+    backgroundColor: '#fff',
+    
+  },
+  imageStyle: {
+    width: '100%', // Asegúrate de ajustar el ancho según tu diseño
+    height:130, // Ajusta la altura como necesites
+    resizeMode: 'cover', // o 'cover', dependiendo de cómo quieras que se muestre la imagen
+    marginBottom: 20, // Añade espacio debajo de la imagen, si es necesario
   },
   logo: {
     width: 350, // Ajustar según tu logo
-    height: 160, // Ajustar según tu logo
+    height: 200, // Ajustar según tu logo
     resizeMode: 'contain',
     marginBottom: 10,
   },

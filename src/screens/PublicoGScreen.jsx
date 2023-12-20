@@ -51,12 +51,12 @@ const PublicoGScreen = () => {
       <CustomInputField
         icon={require('../assets/images/users-icon.png')} // Asegúrate de tener la imagen en tu proyecto
         title="Nombre(s)"
-        placeholder="nombre"
+        placeholder="Nombre(s)"
       />
      <CustomInputField
         icon={require('../assets/images/users-icon.png')} // Asegúrate de tener la imagen en tu proyecto
         title="Apellido(s)"
-        placeholder="apellidos"
+        placeholder="Apellidos(s)"
       />
      
       <CustomRadioField
@@ -116,8 +116,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   welcomeText: {
-    fontSize: 10,
-    fontWeight: 'bold',
+    fontSize: 15,
+    
     color: 'red',
     marginBottom: 20,
     textAlign: 'center', // Centra el texto horizontalmente

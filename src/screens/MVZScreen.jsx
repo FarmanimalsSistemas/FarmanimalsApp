@@ -2,6 +2,8 @@ import React from 'react';
 import { Text, TouchableOpacity, StyleSheet, Image, ScrollView } from 'react-native';
 import CustomNumberInputField from '../components/common/CustomPhoneInput'
 import CustomFileInput from '../components/common/CustomFileInput'
+import CustomInputField from '../components/common/CustomInputField'
+
 
 const MVZScreen = () => {
 
@@ -11,13 +13,22 @@ const MVZScreen = () => {
         source={require('../assets/images/Logotipo.png')} // Reemplaza con la ruta a tu logo
         style={styles.logo}
       />
+      <Text style={styles.welcomeText}>Bienvenido al Mundo Farmanimals</Text>
       <Text style={styles.headerTitle}>Carga tus datos MVZ en formato PDF O JPG</Text>
+
       <CustomNumberInputField
-  icon={require('../assets/images/phone-icon.png')} // Reemplaza con la ruta a tu icono
-  title="Número de Teléfono"
-  onChangeText={(text) => console.log('Número de teléfono:', text)}
-  // ...otros props que necesites...
-/>
+        icon={require('../assets/images/phone-icon.png')} // Reemplaza con la ruta a tu icono
+        title="Número de Teléfono"
+        onChangeText={(text) => console.log('Número de teléfono:', text)}
+        // ...otros props que necesites...
+      />
+      <CustomNumberInputField
+        icon={require('../assets/images/sucursal.png')} // Reemplaza con la ruta a tu icono
+        title="Número de Sucursales"
+        onChangeText={(text) => console.log('Número de sucursales:', text)}
+        // ...otros props que necesites...
+      />
+      
       {/* Resto de tu UI */}
       
       <CustomFileInput
@@ -36,8 +47,10 @@ const MVZScreen = () => {
         icon={require('../assets/images/upload-icon.png')}
         title="Anexa tu Cedula Fiscal"
       />
+      
       {/* Repite los botones para otros archivos */}
       <TouchableOpacity style={styles.saveButton}>
+        
         <Text style={styles.saveButtonText}>Guardar</Text>
       </TouchableOpacity>
     </ScrollView>
@@ -49,6 +62,13 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     backgroundColor: '#fff',
+  },
+  welcomeText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'black',
+    marginBottom: 20,
+    textAlign: 'center', // Centra el texto horizontalmente
   },
   logo: {
     height: 200, // Ajusta según las dimensiones de tu logo
@@ -77,7 +97,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   headerTitle: {
-    fontSize: 18, // Aumenta el tamaño de la fuente
+    fontSize: 14, // Aumenta el tamaño de la fuente
     fontWeight: 'bold',
     color: 'red', // Cambia el color a azul
     marginBottom: 20,
