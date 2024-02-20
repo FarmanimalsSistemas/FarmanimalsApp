@@ -1,7 +1,6 @@
 // src/screens/PrivacyPolicyScreen.tsx
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Asegúrate de que esta librería esté instalada.
 
 const PrivacyPolicyScreen = () => {
   return (

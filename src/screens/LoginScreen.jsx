@@ -1,9 +1,7 @@
 // src/screens/LoginScreen.tsx
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
 import CustomPasswordField from '../components/common/CustomPasswordField';
 import CustomInputField from '../components/common/CustomInputField';
 

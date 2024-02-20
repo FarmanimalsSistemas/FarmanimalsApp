@@ -1,7 +1,6 @@
 // CustomPasswordField.js
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 const CustomPasswordField = ({ icon, title, ...rest }) => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
